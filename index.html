@@ -1,0 +1,628 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>BraghiniWeb | Desenvolvimento de Soluções Web & SaaS</title>
+  
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;800&display=swap" rel="stylesheet">
+  
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+
+  <style>
+    /* VARIABLES & RESET */
+    :root {
+      --bg-dark: #0a0c10;
+      --bg-card: #12161f;
+      --bg-card-hover: #1a202c;
+      --primary-blue: #0066ff;
+      --cyan-neon: #00d2ff;
+      --text-white: #ffffff;
+      --text-gray: #a0aec0;
+      --border-color: #1e293b;
+      --font-main: 'Inter', sans-serif;
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: var(--font-main);
+      scroll-behavior: smooth;
+    }
+
+    body {
+      background-color: var(--bg-dark);
+      color: var(--text-white);
+      line-height: 1.6;
+      overflow-x: hidden;
+    }
+
+    a {
+      text-decoration: none;
+      color: inherit;
+    }
+
+    /* HEADER & NAVBAR */
+    header {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      background: rgba(10, 12, 16, 0.85);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid var(--border-color);
+      z-index: 1000;
+      padding: 15px 5%;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .logo img {
+      height: 45px;
+      width: auto;
+      display: block;
+    }
+
+    nav ul {
+      display: flex;
+      list-style: none;
+      gap: 25px;
+    }
+
+    nav a {
+      color: var(--text-gray);
+      font-weight: 500;
+      transition: color 0.3s;
+    }
+
+    nav a:hover {
+      color: var(--cyan-neon);
+    }
+
+    .btn-header {
+      background: linear-gradient(135deg, var(--primary-blue), var(--cyan-neon));
+      color: #fff;
+      padding: 10px 20px;
+      border-radius: 8px;
+      font-weight: 600;
+      transition: transform 0.3s, box-shadow 0.3s;
+    }
+
+    .btn-header:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 4px 20px rgba(0, 210, 255, 0.4);
+    }
+
+    /* HERO SECTION */
+    .hero {
+      padding: 160px 5% 100px;
+      text-align: center;
+      max-width: 900px;
+      margin: 0 auto;
+    }
+
+    .hero-badge {
+      display: inline-block;
+      background: rgba(0, 210, 255, 0.1);
+      border: 1px solid var(--cyan-neon);
+      color: var(--cyan-neon);
+      padding: 6px 16px;
+      border-radius: 20px;
+      font-size: 0.9rem;
+      font-weight: 600;
+      margin-bottom: 20px;
+    }
+
+    .hero h1 {
+      font-size: 3.2rem;
+      font-weight: 800;
+      line-height: 1.2;
+      margin-bottom: 20px;
+    }
+
+    .hero-buttons {
+      display: flex;
+      justify-content: center;
+      gap: 15px;
+      flex-wrap: wrap;
+    }
+
+    .btn-primary {
+      background: linear-gradient(135deg, var(--primary-blue), var(--cyan-neon));
+      color: #fff;
+      padding: 15px 32px;
+      border-radius: 8px;
+      font-weight: 700;
+      font-size: 1.05rem;
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      transition: all 0.3s ease;
+    }
+
+    .btn-primary:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 8px 25px rgba(0, 102, 255, 0.4);
+    }
+
+    .btn-secondary {
+      background: transparent;
+      border: 1px solid var(--border-color);
+      color: var(--text-white);
+      padding: 15px 32px;
+      border-radius: 8px;
+      font-weight: 600;
+      font-size: 1.05rem;
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      transition: all 0.3s ease;
+    }
+
+    .btn-secondary:hover {
+      border-color: var(--cyan-neon);
+      color: var(--cyan-neon);
+    }
+
+    /* SERVICES SECTION */
+    .services {
+      padding: 80px 5%;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    .section-title {
+      text-align: center;
+      margin-bottom: 60px;
+    }
+
+    .section-title h2 {
+      font-size: 2.2rem;
+      font-weight: 700;
+      margin-bottom: 10px;
+    }
+
+    .section-title p {
+      color: var(--text-gray);
+    }
+
+    .services-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 25px;
+    }
+
+    .service-card {
+      background: var(--bg-card);
+      border: 1px solid var(--border-color);
+      padding: 30px;
+      border-radius: 12px;
+      transition: all 0.3s;
+    }
+
+    .service-card:hover {
+      transform: translateY(-5px);
+      border-color: var(--primary-blue);
+      box-shadow: 0 10px 30px rgba(0, 102, 255, 0.15);
+    }
+
+    .service-icon {
+      font-size: 2rem;
+      color: var(--cyan-neon);
+      margin-bottom: 15px;
+    }
+
+    .service-card h3 {
+      font-size: 1.3rem;
+      margin-bottom: 10px;
+    }
+
+    .service-card p {
+      color: var(--text-gray);
+      font-size: 0.95rem;
+    }
+
+    /* PORTFOLIO / PROJECTS SECTION */
+    .portfolio {
+      padding: 80px 5%;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    .projects-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 30px;
+    }
+
+    .project-card {
+      background: var(--bg-card);
+      border: 1px solid var(--border-color);
+      border-radius: 12px;
+      overflow: hidden;
+      transition: all 0.3s ease;
+    }
+
+    .project-card:hover {
+      transform: translateY(-8px);
+      border-color: var(--cyan-neon);
+      box-shadow: 0 12px 30px rgba(0, 210, 255, 0.2);
+    }
+
+    /* ESTILOS DO CARROSSEL DE IMAGENS */
+    .project-img-container {
+      position: relative;
+      width: 100%;
+      height: 220px;
+      overflow: hidden;
+      border-bottom: 1px solid var(--border-color);
+    }
+
+    .carousel-track {
+      display: flex;
+      width: 100%;
+      height: 100%;
+      overflow-x: auto;
+      scroll-snap-type: x mandatory;
+      scroll-behavior: smooth;
+      scrollbar-width: none;
+    }
+
+    .carousel-track::-webkit-scrollbar {
+      display: none;
+    }
+
+    .carousel-slide {
+      min-width: 100%;
+      height: 100%;
+      scroll-snap-align: start;
+      flex-shrink: 0;
+    }
+
+    .carousel-slide img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+    }
+
+    /* BOTÕES DO CARROSSEL */
+    .carousel-btn {
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      background: rgba(10, 12, 16, 0.6);
+      color: var(--text-white);
+      border: 1px solid rgba(255, 255, 255, 0.2);
+      width: 32px;
+      height: 32px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      z-index: 10;
+      transition: all 0.3s ease;
+      backdrop-filter: blur(4px);
+    }
+
+    .carousel-btn:hover {
+      background: var(--primary-blue);
+      color: #fff;
+      border-color: var(--primary-blue);
+    }
+
+    .carousel-btn.prev {
+      left: 10px;
+    }
+
+    .carousel-btn.next {
+      right: 10px;
+    }
+
+    /* INDICADORES (DOTS) */
+    .carousel-dots {
+      position: absolute;
+      bottom: 10px;
+      left: 50%;
+      transform: translateX(-50%);
+      display: flex;
+      gap: 6px;
+      z-index: 10;
+      background: rgba(10, 12, 16, 0.5);
+      padding: 4px 8px;
+      border-radius: 12px;
+      backdrop-filter: blur(4px);
+    }
+
+    .dot {
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background: rgba(255, 255, 255, 0.4);
+      transition: background 0.3s;
+    }
+
+    .dot.active {
+      background: var(--cyan-neon);
+    }
+
+    .project-info {
+      padding: 20px;
+    }
+
+    .project-tag {
+      font-size: 0.8rem;
+      color: var(--cyan-neon);
+      font-weight: 700;
+      text-transform: uppercase;
+      margin-bottom: 5px;
+      display: block;
+    }
+
+    .project-info h3 {
+      font-size: 1.25rem;
+      margin-bottom: 10px;
+    }
+
+    .project-info p {
+      color: var(--text-gray);
+      font-size: 0.9rem;
+      margin-bottom: 15px;
+    }
+
+    /* FOOTER / CONTACT */
+    footer {
+      background: #06080b;
+      border-top: 1px solid var(--border-color);
+      padding: 60px 5% 30px;
+      text-align: center;
+    }
+
+    .footer-content {
+      max-width: 800px;
+      margin: 0 auto 40px;
+    }
+
+    .social-links {
+      display: flex;
+      justify-content: center;
+      gap: 20px;
+      margin: 25px 0;
+    }
+
+    .social-btn {
+      width: 50px;
+      height: 50px;
+      border-radius: 50%;
+      background: var(--bg-card);
+      border: 1px solid var(--border-color);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.3rem;
+      color: var(--text-white);
+      transition: all 0.3s;
+    }
+
+    .social-btn:hover {
+      background: var(--primary-blue);
+      color: #fff;
+      transform: translateY(-3px);
+      box-shadow: 0 5px 15px rgba(0, 102, 255, 0.4);
+    }
+
+    .social-btn.instagram:hover {
+      background: #e1306c;
+      box-shadow: 0 5px 15px rgba(225, 48, 108, 0.4);
+    }
+
+    .social-btn.whatsapp:hover {
+      background: #25d366;
+      box-shadow: 0 5px 15px rgba(37, 211, 102, 0.4);
+    }
+
+    .copyright {
+      color: var(--text-gray);
+      font-size: 0.85rem;
+      border-top: 1px solid var(--border-color);
+      padding-top: 20px;
+    }
+
+    /* RESPONSIVO */
+    @media (max-width: 768px) {
+      nav { display: none; }
+      .hero h1 { font-size: 2.2rem; }
+      .hero p { font-size: 1rem; }
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <a href="#" class="logo">
+      <img src="braghiniweblogo.jpeg" alt="BraghiniWeb Logo" />
+    </a>
+    <nav>
+      <ul>
+        <li><a href="#servicos">Serviços</a></li>
+        <li><a href="#projetos">Projetos</a></li>
+        <li><a href="#contato">Contato</a></li>
+      </ul>
+    </nav>
+    <a href="https://wa.me/11989338536" target="_blank" class="btn-header">Fazer Orçamento</a>
+  </header>
+
+  <section class="hero">
+    <span class="hero-badge">🚀 Desenvolvimento de Soluções Web</span>
+    <h1>Transformamos ideias em <span>Sistemas Inteligentes</span> e de Alta Conversão</h1>
+    <p>Criamos Softwares SaaS, Landing Pages e Sistemas Web sob medida para automatizar e escalar o seu negócio.</p>
+    
+    <div class="hero-buttons">
+      <a href="https://wa.me/11989338536?text=Olá,%20gostaria%20de%20fazer%20um%20orçamento!" target="_blank" class="btn-primary">
+        <i class="fa-brands fa-whatsapp"></i> Falar no WhatsApp
+      </a>
+      <a href="https://instagram.com/braghiniweb" target="_blank" class="btn-secondary">
+        <i class="fa-brands fa-instagram"></i> Ver Instagram
+      </a>
+    </div>
+  </section>
+
+  <section class="services" id="servicos">
+    <div class="section-title">
+      <h2>O Que Fazemos</h2>
+      <p>Soluções tecnológicas focadas em atender a necessidade exata da sua empresa.</p>
+    </div>
+
+    <div class="services-grid">
+      <div class="service-card">
+        <div class="service-icon"><i class="fa-solid fa-globe"></i></div>
+        <h3>Landing Pages</h3>
+        <p>Páginas de alta conversão projetadas para transformar visitantes em clientes compradores no WhatsApp.</p>
+      </div>
+
+      <div class="service-card">
+        <div class="service-icon"><i class="fa-solid fa-laptop-code"></i></div>
+        <h3>Sistemas Web</h3>
+        <p>Plataformas completas para gerenciar agendamentos, clientes, estoque e faturamento da sua empresa.</p>
+      </div>
+
+      <div class="service-card">
+        <div class="service-icon"><i class="fa-solid fa-rocket"></i></div>
+        <h3>Micro-SaaS</h3>
+        <p>Criação e escalabilidade de softwares recorrentes em modelo de assinatura para nichos específicos.</p>
+      </div>
+
+      <div class="service-card">
+        <div class="service-icon"><i class="fa-solid fa-sliders"></i></div>
+        <h3>Soluções Sob Medida</h3>
+        <p>Desenvolvimento exclusivo para resolver gargalos operacionais específicos do seu negócio.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="portfolio" id="projetos">
+    <div class="section-title">
+      <h2>Nossos Projetos</h2>
+      <p>Conheça algumas das soluções desenvolvidas pela BraghiniWeb.</p>
+    </div>
+
+    <div class="projects-grid">
+      
+      <!-- PROJETO 1 -->
+      <div class="project-card">
+        <div class="project-img-container">
+          <button class="carousel-btn prev" onclick="moveCarousel(this, -1)"><i class="fa-solid fa-chevron-left"></i></button>
+          <div class="carousel-track">
+            <!-- COLOQUE OS LINKS/CAMINHOS DAS SUAS 4 FOTOS ABAIXO NO 'src=""' -->
+            <div class="carousel-slide"><img src="BrowAgenda/BrowAgenda1.png" alt="Brow Agenda Foto 1" /></div>
+            <div class="carousel-slide"><img src="BrowAgenda/BrowAgenda2.png" alt="Brow Agenda Foto 2" /></div>
+            <div class="carousel-slide"><img src="BrowAgenda/BrowAgenda3.png" alt="Brow Agenda Foto 3" /></div>
+            <div class="carousel-slide"><img src="BrowAgenda/BrowAgenda4.png" alt="Brow Agenda Foto 4" /></div>
+          </div>
+          <button class="carousel-btn next" onclick="moveCarousel(this, 1)"><i class="fa-solid fa-chevron-right"></i></button>
+          <div class="carousel-dots">
+            <span class="dot active"></span>
+            <span class="dot"></span>
+            <span class="dot"></span>
+            <span class="dot"></span>
+          </div>
+        </div>
+        <div class="project-info">
+          <span class="project-tag">SaaS / Gestão</span>
+          <h3>Brow Agenda</h3>
+          <p>Sistema completo de agendamento online e cálculo de faturamento focado no segmento de estética e beleza.</p>
+        </div>
+      </div>
+
+      <!-- PROJETO 3 -->
+      <div class="project-card">
+        <div class="project-img-container">
+          <button class="carousel-btn prev" onclick="moveCarousel(this, -1)"><i class="fa-solid fa-chevron-left"></i></button>
+          <div class="carousel-track">
+            <!-- COLOQUE OS LINKS/CAMINHOS DAS SUAS 4 FOTOS ABAIXO NO 'src=""' -->
+            <div class="carousel-slide"><img src="Ladingpage/Lading1.png" alt="Landing Page Foto 1" /></div>
+            <div class="carousel-slide"><img src="Ladingpage/Lading2.png" alt="Landing Page Foto 2" /></div>
+            <div class="carousel-slide"><img src="Ladingpage/Lading3.png" alt="Landing Page Foto 3" /></div>
+          </div>
+          <button class="carousel-btn next" onclick="moveCarousel(this, 1)"><i class="fa-solid fa-chevron-right"></i></button>
+          <div class="carousel-dots">
+            <span class="dot active"></span>
+            <span class="dot"></span>
+            <span class="dot"></span>
+            <span class="dot"></span>
+          </div>
+        </div>
+        <div class="project-info">
+          <span class="project-tag">Landing Page</span>
+          <h3>Página Alta Conversão</h3>
+          <p>A Página que voce esta vendo é uma Landing page!<p>
+          <p>Landing page responsiva e otimizada para captação de leads via tráfego pago para negócios locais.</p>
+        </div>
+      </div>
+
+     
+
+    </div>
+  </section>
+
+  <footer id="contato">
+    <div class="footer-content">
+      <h2>Pronto para levar seu negócio ao próximo nível?</h2>
+      <p>Fale conosco no WhatsApp para conversarmos sobre o seu projeto!</p>
+
+      <div class="social-links">
+        <a href="https://wa.me/11989338536" target="_blank" class="social-btn whatsapp" title="WhatsApp">
+          <i class="fa-brands fa-whatsapp"></i>
+        </a>
+        <a href="https://instagram.com/braghiniweb" target="_blank" class="social-btn instagram" title="Instagram">
+          <i class="fa-brands fa-instagram"></i>
+        </a>
+      </div>
+
+      <a href="https://wa.me/11989338536?text=Olá,%20quero%20um%20orçamento!" target="_blank" class="btn-primary">
+        Solicitar Orçamento Agora
+      </a>
+    </div>
+
+    <div class="copyright">
+      &copy; 2026 BraghiniWeb - Todos os direitos reservados.
+    </div>
+  </footer>
+
+  <script>
+    // Função para alternar as fotos via botões de seta
+    function moveCarousel(button, direction) {
+      const container = button.closest('.project-img-container');
+      const track = container.querySelector('.carousel-track');
+      const slideWidth = track.clientWidth;
+      
+      track.scrollBy({ left: slideWidth * direction, behavior: 'smooth' });
+    }
+
+    // Sincroniza as bolinhas indicadoras quando o usuário rola/desliza a foto
+    document.querySelectorAll('.carousel-track').forEach(track => {
+      track.addEventListener('scroll', () => {
+        const container = track.closest('.project-img-container');
+        const dots = container.querySelectorAll('.dot');
+        const slideWidth = track.clientWidth;
+        
+        const index = Math.round(track.scrollLeft / slideWidth);
+        
+        dots.forEach((dot, i) => {
+          if (i === index) {
+            dot.classList.add('active');
+          } else {
+            dot.classList.remove('active');
+          }
+        });
+      });
+    });
+  </script>
+
+</body>
+</html>
